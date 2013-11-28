@@ -1,0 +1,63 @@
+\newcommand{\Respons}{{\freeserif \char"211F}}
+\newcommand{\Versicle}{{\freeserif \char"2123}}
+
+% fontes
+\newcommand{\fontlat}[1]{\biolinum #1}
+\newcommand{\fontfr}[1]{#1}
+
+\newcommand{\SECTION}[1]
+{
+  \section*{#1}
+  \addcontentsline{toc}{section}{#1}
+}
+
+\newcommand{\SUBSECTION}[1]
+{
+  \subsection*{#1}
+  \addcontentsline{toc}{subsection}{#1}
+}
+
+%%%% PARALLEL %%%
+
+\newcommand{\BEGINPARA}{\begin{Parallel}[c]{0.46\textwidth}{0.46\textwidth}}
+\newcommand{\LR}[2]{\selectlanguage{french}\ParallelLText{\fontlat{#1}}
+                   \selectlanguage{french}\ParallelRText{\fontfr{#2}}\ParallelPar}
+\newcommand{\ENDPARA}{\end{Parallel}}
+
+\newcommand{\BEGINENLUL}{\noindent\begin{minipage}[t]{0.44\textwidth}}
+  \newcommand{\BEGINENLUR}{\noindent\begin{minipage}[t]{0.51\textwidth}}
+    \newcommand{\ENDENLU}{\end{minipage}}
+
+%% insertion grégorien
+\newcommand{\gregorien}[3]{
+\gresetfirstlineaboveinitial{\small \textsc{\textbf{#1}}}{\small \textsc{\textbf{~#1}}}
+\includescore{#2}
+}
+
+% TITRE
+
+\makeatletter
+\def\maketitle{
+  \begin{titlepage}
+    \begin{center}
+      {\Large \@author}
+      \null\vfill
+    \end{center}
+    \begin{center}
+      {\huge \@title}\\
+      \vskip 0.5cm
+      {\Large \emph{\@subtitle}}
+      % \vskip 1cm
+      % {\texttt{\@email}}
+      \vskip 2cm
+      % {\Large \@date}
+      {\normalsize {\it
+          1\iere{} édition.}}
+      \vfill\null
+      {\small Creative Commons BY-NC-SA}
+    \end{center}
+  \end{titlepage}
+}
+\def\email#1{\def\@email{#1}}
+\def\subtitle#1{\def\@subtitle{#1}}
+\makeatother
